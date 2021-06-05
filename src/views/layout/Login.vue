@@ -73,12 +73,13 @@ export default {
             .login(this.loginForm)
             .then((res) => {
               console.log(res);
-              this.$store.dispath('setUserInfo', res);
+              this.$store.dispatch('setUserInfo', res);
               this.$router.push({
                 name: 'Home',
               });
             })
             .catch((err) => {
+              console.log(err);
               this.$message.error(err);
             });
           return true;

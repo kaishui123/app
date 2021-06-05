@@ -8,12 +8,13 @@ import {
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     // 用于切换菜单的闭合状态  false 代表不闭合  true代表闭合
     collapsed: false,
     // 存储用户信息
     user: getUserCookie(),
+    menuRoutes: [],
   },
   mutations: {
     changeCollapsed(state) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
         role: '',
         email: '',
       };
+    },
+    changeMenuRoutes(state, routes) {
+      state.menuRoutes = routes;
     },
   },
   actions: {
@@ -49,6 +53,15 @@ export default new Vuex.Store({
       commit('logout');
       removeUserCookie();
     },
+    changeMenuRoutes({
+      commit,
+    }, routes) {
+      commit('changeMenuRoutes', routes);
+    },
   },
   modules: {},
 });
+
+window.$store = store;
+
+export default store;
