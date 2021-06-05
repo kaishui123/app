@@ -29,35 +29,35 @@
   </div>
 </template>
 <script>
-import api from "@/api/user.js";
+import api from '@/api/user';
+
 export default {
   data() {
-    let emailReg = /^[\w-]+@[\w.-]+.com$/;
-    let checkEmail = (rule, value, callback) => {
+    const emailReg = /^[\w-]+@[\w.-]+.com$/;
+    const checkEmail = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("请输入邮箱"));
+        return callback(new Error('请输入邮箱'));
       }
       if (emailReg.test(value)) {
         return callback();
-      } else {
-        return callback(new Error("邮箱格式不正确"));
       }
+      return callback(new Error('邮箱格式不正确'));
     };
-    let validatePass = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请输入密码"));
+    const validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
       } else {
         callback();
       }
     };
     return {
       loginForm: {
-        password: "",
-        email: "",
+        password: '',
+        email: '',
       },
       rules: {
-        password: [{ validator: validatePass, trigger: "change" }],
-        email: [{ validator: checkEmail, trigger: "change" }],
+        password: [{ validator: validatePass, trigger: 'change' }],
+        email: [{ validator: checkEmail, trigger: 'change' }],
       },
       layout: {
         labelCol: { span: 4 },
@@ -72,16 +72,19 @@ export default {
           api
             .login(this.loginForm)
             .then((res) => {
+              console.log(res);
+              this.$store.dispatch('setUserInfo', res);
               this.$router.push({
-                name: "Home",
+                name: 'Home',
               });
             })
             .catch((err) => {
+              console.log(err);
               this.$message.error(err);
             });
           return true;
         }
-        console.log("error submit!!");
+        console.log('error submit!!');
         return false;
       });
     },
