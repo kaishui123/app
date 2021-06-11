@@ -1,13 +1,77 @@
 <template>
-  <div>商品列表</div>
+  <div class="product-list">
+    <!-- 搜索 -->
+    <search @submit="searchSubmit" :data="categoryList" />
+    <!-- 表格 -->
+    <productsTable
+      :data="tableData"
+      :page="page"
+      @change="changePage"
+      :categoryList="categoryList"
+    />
+  </div>
 </template>
 
 <script>
-export default {
+import Search from '@/components/search.vue';
+import productsTable from '@/components/productsTable.vue';
+import api from '@/api/product';
+import cateporyApi from '@/api/category';
 
+export default {
+  data() {
+    return {
+      tableData: [],
+      searchForm: {},
+      categoryList: [],
+      page: {
+        current: 1,
+        pageSize: 10,
+        showSizeChanger: true,
+        total: 1,
+      },
+      categoryObj: {},
+    };
+  },
+  components: {
+    Search,
+    productsTable,
+  },
+  async created() {
+    await cateporyApi.list().then((res) => {
+      this.categoryList = res.data;
+      res.data.forEach((item) => {
+        this.categoryObj[item.id] = item;
+      });
+    });
+    this.getTableData();
+  },
+  methods: {
+    searchSubmit(form) {
+      this.searchForm = form;
+    },
+    getTableData() {
+      api
+        .list({
+          page: this.page.current,
+          size: this.page.pageSize,
+          ...this.searchForm,
+        })
+        .then((res) => {
+          this.page.total = res.total;
+          this.tableData = res.data.map((item) => ({
+            ...item,
+            categoryName: this.categoryObj[item.category].name,
+          }));
+        });
+    },
+    changePage(page) {
+      this.page = page;
+      this.getTableData();
+    },
+  },
 };
 </script>
 
 <style>
-
 </style>
