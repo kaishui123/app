@@ -54,3 +54,10 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.user-info {
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+</style>
