@@ -1,31 +1,37 @@
 # mall-admin-app
 
+**username 2012419819@qq.com**
+**passward 12345678**
+
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### 每日优鲜接口说明
 
-- [每日优鲜b端接口appkey注册地址](https://mallapi.duyiedu.com/login/#/register)
+- [每日优鲜 b 端接口 appkey 注册地址](https://mallapi.duyiedu.com/login/#/register)
 
-- [每日优鲜b端接口appkey查询地址](https://mallapi.duyiedu.com/login/#/login)
-
+- [每日优鲜 b 端接口 appkey 查询地址](https://mallapi.duyiedu.com/login/#/login)
 
 # 每日优鲜接口文档
 
@@ -100,39 +106,40 @@ method: post
 
 请求参数：
 
-| 字段     |  类型  | 是否必须 | 备注                                                             |
-| :------- | :----: | :------: | ---------------------------------------------------------------- |
-| email    | String |   必须   | 用户邮箱                                                         |
-| password | String |   必须   | 用户密码                                                         |
-| code     | String |   必须   | 验证码                                                           |
+| 字段     |  类型  | 是否必须 | 备注     |
+| :------- | :----: | :------: | -------- |
+| email    | String |   必须   | 用户邮箱 |
+| password | String |   必须   | 用户密码 |
+| code     | String |   必须   | 验证码   |
 
 ### 修改用户信息
+
 url: /passport/changeUserInfo
 
 method: put
 
 请求参数：
 
-| 字段     |  类型  | 是否必须 | 备注                                                             |
-| :------- | :----: | :------: | ---------------------------------------------------------------- |
-| email    | String |   必须   | 用户邮箱                                                         |
-| password | String |   必须   | 用户密码                                                         |
-| newPassword | String |   非必须   | 新的用户密码                                                         |
-| code     | String |   必须   | 验证码                                                           |
-| username | String |   必须   | 用户名                                                           |
-| role     | String |  非必须  | 用户角色 (可选值 customer： 代表普通用户， admin:代表管理员用户) |
+| 字段        |  类型  | 是否必须 | 备注                                                             |
+| :---------- | :----: | :------: | ---------------------------------------------------------------- |
+| email       | String |   必须   | 用户邮箱                                                         |
+| password    | String |   必须   | 用户密码                                                         |
+| newPassword | String |  非必须  | 新的用户密码                                                     |
+| code        | String |   必须   | 验证码                                                           |
+| username    | String |   必须   | 用户名                                                           |
+| role        | String |  非必须  | 用户角色 (可选值 customer： 代表普通用户， admin:代表管理员用户) |
 
 ### 获取验证码
+
 url: /passport/getCode
 
 method: post
 
 请求参数：
 
-| 字段     |  类型  | 是否必须 | 备注                                                             |
-| :------- | :----: | :------: | ---------------------------------------------------------------- |
-| email    | String |   必须   | 用户邮箱                                                         |
-
+| 字段  |  类型  | 是否必须 | 备注     |
+| :---- | :----: | :------: | -------- |
+| email | String |   必须   | 用户邮箱 |
 
 ### 查询产品列表
 
@@ -148,7 +155,7 @@ method: get
 | page       | Number |  非必须  | 获取产品的页码                     |
 | size       | Number |  非必须  | 获取产品每一页的条数               |
 | searchWord | String |  非必须  | 检索产品的关键词                   |
-| category   | Number | 非必须   | 检索产品的类目|
+| category   | Number |  非必须  | 检索产品的类目                     |
 
 响应数据：
 | 字段 | 类型 | 是否必须 | 备注 |
@@ -258,7 +265,6 @@ method: PUT
 | msg | String | 响应描述信息|
 |status | String | 响应状态 success 代表成功 fail 代表失败 |
 
-
 ### 查询商品详情
 
 url: /products/:id
@@ -294,7 +300,6 @@ method: delete
 | data | Object | 必须 | 返回的数据 |
 | msg | String | 响应描述信息|
 |status | String | 响应状态 success 代表成功 fail 代表失败 |
-
 
 ### 商品类目新增
 
@@ -338,11 +343,12 @@ method: PUT
 
 响应数据：
 
-| 字段     |  类型  | 是否必须 | 备注                                                             |
-| :------- | :----: | :------: | ---------------------------------------------------------------- |
-| status    | String |   必须   | 处理状态（success为成功, fail为失败）                                                         |
-| data | Object |   必须   | 返回数据                                                         |
-| msg     | String |   必须   | 返回提示信息  
+| 字段   |  类型  | 是否必须 | 备注                                    |
+| :----- | :----: | :------: | --------------------------------------- |
+| status | String |   必须   | 处理状态（success 为成功, fail 为失败） |
+| data   | Object |   必须   | 返回数据                                |
+| msg    | String |   必须   | 返回提示信息                            |
+
 ### 商品类目删除
 
 url: /category/:id
@@ -356,11 +362,11 @@ method: delete
 
 响应数据：
 
-| 字段     |  类型  | 是否必须 | 备注                                                             |
-| :------- | :----: | :------: | ---------------------------------------------------------------- |
-| status    | String |   必须   | 处理状态（success为成功, fail为失败）                                                         |
-| data | Object |   必须   | 返回数据                                                         |
-| msg     | String |   必须   | 返回提示信息                                                           |
+| 字段   |  类型  | 是否必须 | 备注                                    |
+| :----- | :----: | :------: | --------------------------------------- |
+| status | String |   必须   | 处理状态（success 为成功, fail 为失败） |
+| data   | Object |   必须   | 返回数据                                |
+| msg    | String |   必须   | 返回提示信息                            |
 
 ## 上传图片
 
@@ -374,7 +380,6 @@ method: POST
 | appkey | String | 必须 | 用户访问接口时所必须携带的身份凭证 |
 | avatar | FileBanary | 必须 | 图片数据 |
 
-
 响应参数：
 | 字段 | 类型 | 是否必须 | 备注 |
 |:-------| :-------: | :-------: |-------|
@@ -384,12 +389,12 @@ method: POST
 
 响应数据例子：
 {
-    status: 'success',
-    msg: '成功',
-    data: {
-        name: filename,
-        status: 'done',
-        url: result.url,
-        thumbUrl: result.url,
-    },
+status: 'success',
+msg: '成功',
+data: {
+name: filename,
+status: 'done',
+url: result.url,
+thumbUrl: result.url,
+},
 }
